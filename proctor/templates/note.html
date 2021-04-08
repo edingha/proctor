@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block title %}
+<title>RACE Proctor | {{ note.title }}</title> 
+{% endblock %}
+
+{% block content %}
+<article>
+    <h1>{{ note.title }}</h1>
+    <p>{{ note.content }}</p>
+</article>
+{% endblock %}
+
+{% block aside %}
+<h3>My Notes</h3>
+{% for note in notes %}
+    <p><a href="{{ url_for('view', id=note.id)}}">{{ note.title }}</a></p>
+{% endfor %}
+{% endblock %}

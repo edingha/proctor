@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% from "form_macros.html" import render_field %}
+
+{% block title %}
+<title>RACE Proctoring|  Index</title>
+{% endblock %}
+
+{% block content %}
+<article>
+    <h1 style="clear:both">Create new Note</h1>
+    <form action="" method="post">
+        {{ form.hidden_tag() }}
+        <table>
+            {{ render_field(form.title, size=50) }}
+            {{ render_field(form.content) }}
+            
+            <tr class="submit">
+                <td></td>
+                <td><button type="submit">Save</button></td>
+            </tr>
+        </table>
+    </form>
+</article>
+{% endblock %}
+
+{% block aside %}
+<h3>My Notes</h3>
+{% for note in notes %}
+    <p><a href="{{ url_for('view', id=note.id)}}">{{ note.title }}</a></p>
+{% endfor %}
+{% endblock %}

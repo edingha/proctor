@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% from "form_macros.html" import render_field %}
+
+{% block title %}
+<title>RACE Proctor |  Sign Up</title>
+{% endblock %}
+
+{% block content %}
+<article class=flashes>
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <ul>
+            {% for message in messages %}
+                <li>{{ message }}</li>
+            {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+</article>
+
+<article>
+    <section>
+        <h1 style="clear: both">Enroll your exam with exam code</h1>
+        <form action="{{ url_for('enrollment') }}" method="post" name="enrollment">
+            {{ form.hidden_tag() }}
+            <table>
+                {{ render_field(form.username, size=50) }}
+                {{ render_field(form.email, size=50) }}
+                {{ render_field(form.exam, size=50) }}
+               
+
+                <tr class="submit">
+                    <td></td>
+                    <td><button type="submit">Submit</button></td>
+                </tr>
+            </table>
+        </form>
+    </section>
+</article>
+{% endblock %}
+
+{% block aside %}
+<p>No notes to show yet</p>
+{% endblock %}

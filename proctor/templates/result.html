@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% from "form_macros.html" import render_field %}
+
+{% block title %}
+<title>RACE Proctor |  Sign Up</title>
+{% endblock %}
+
+{% block content %}
+<article class=flashes>
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <ul>
+            {% for message in messages %}
+                <li>{{ message }}</li>
+            {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+</article>
+
+<h1>{{ title }} </h1>
+
+<body>
+    <h1>VALIDATION SCREEN</h1>
+    {{ table }}
+{% endblock %}
+
+{% block aside %}
+<p>No notes to show yet</p>
+{% endblock %}

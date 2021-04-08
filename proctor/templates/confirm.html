@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% from "form_macros.html" import render_field %}
+
+{% block title %}
+<title>RACE Proctor |  Sign Up</title>
+{% endblock %}
+
+{% block content %}
+<h1>{{ title }} </h1>
+
+    <div class="row">
+        <div class="col-md-12 text-center">
+
+            {% if not classes %}
+                <h1>You are not enrolled in any class.</h1>
+            {% else %}
+                <h1>You are enrolled in:</h1>
+
+                <table class="table table-hover">
+                    <thead>
+                    <tr>
+                        <th scope="col">User ID</th>
+                        <th scope="col">Exam</th>
+                        <th scope="col">Description</th>
+                        <th scope="col">Status</th>
+                        <button id="Verify" type="button" class="btn btn-outline-success btn-lg">verify</button>
+                        <button id="Confirm" type="button" class="btn btn-outline-success btn-lg">confirm</button>
+                    </tr>
+                    </thead>
+                    <tbody>
+
+                    <!-- Construct the rest of courses here -->
+                    {% for class in classes %}
+                    <tr>
+                        <td scope='row'>{{ class.r2["courseID"] }}</td>
+                        <td>{{ class.r2["title"] }}</td>
+                        <td>{{ class.r2["description"] }}</td>
+                        <td>{{ class.r2["credits"] }}</td>
+                        <td>{{ class.r2["term"] }}</td>                        
+                    </tr>
+                    {% endfor %}
+                    
+                    </tbody>
+                </table>
+                {% endif %}
+        </div>
+    </div>
+{% endblock %}
+
+{% block aside %}
+<p>No notes to show yet</p>
+{% endblock %}
